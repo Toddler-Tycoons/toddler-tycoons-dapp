@@ -5,10 +5,6 @@ import { Link } from "react-router-dom";
 // Component Imports
 import { MainNav } from "./Nav";
 
-// Asset Imports
-import Tycoon1 from "../assets/imgs/placeholder-tycoon-1.png";
-import Tycoon2 from "../assets/imgs/placeholder-tycoon-2.png";
-
 const Home = () => {
 	return (
 		<div className="home">
@@ -42,8 +38,16 @@ const Home = () => {
 			</div>
 
 			<div className="background">
-				<img src={Tycoon1} alt="Tycoon" className="tycoon tycoon-1" />
-				<img src={Tycoon2} alt="Tycoon" className="tycoon tycoon-2" />
+				<img
+					src={"./assets/imgs/placeholder-tycoon-1.png"}
+					alt="Tycoon"
+					className="tycoon tycoon-1"
+				/>
+				<img
+					src={"./assets/imgs/placeholder-tycoon-2.png"}
+					alt="Tycoon"
+					className="tycoon tycoon-2"
+				/>
 			</div>
 		</div>
 	);

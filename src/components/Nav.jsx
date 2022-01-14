@@ -2,27 +2,21 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
-// Assets Import
-import TwitterIcon from "../assets/svgs/twitter.svg";
-import DiscordIcon from "../assets/svgs/discord.svg";
-import InstagramIcon from "../assets/svgs/instagram.svg";
-import TelegramIcon from "../assets/svgs/telegram.svg";
-
 export const MainNav = () => {
 	return (
 		<div className="main-nav">
 			<div className="socials">
 				<Link to="#">
-					<TwitterIcon />
+					<img src="./assets/svgs/twitter.svg" />
 				</Link>
 				<Link to="#">
-					<DiscordIcon />
+					<img src="./assets/svgs/discord.svg" />
 				</Link>
 				<Link to="#">
-					<TelegramIcon />
+					<img src="./assets/svgs/instagram.svg" />
 				</Link>
 				<Link to="#">
-					<InstagramIcon />
+					<img src="./assets/svgs/telegram.svg" />
 				</Link>
 			</div>
 
