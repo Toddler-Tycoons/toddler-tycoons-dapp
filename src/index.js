@@ -1,13 +1,21 @@
+// Deependencies import
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import { BrowserRouter as Router } from "react-router-dom";
+
+// Importing components
 import reportWebVitals from "./reportWebVitals";
+import App from "./App";
+
+// Importing styles
+import "./index.css";
 
 ReactDOM.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
+	<Router>
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>
+	</Router>,
 	document.getElementById("root"),
 );
 
