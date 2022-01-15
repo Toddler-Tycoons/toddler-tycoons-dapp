@@ -9,7 +9,10 @@ const Mint = () => {
 	return (
 		<div className="mint">
 			<AltNav />
-			<div className="tycoon-imgs"></div>
+			<div className="tycoon-imgs">
+				<img src={"./assets/imgs/placeholder-tycoon-1.png"} alt="Tycoon" />
+				<img src={"./assets/imgs/placeholder-tycoon-2.png"} alt="Tycoon" />
+			</div>
 			<div className="content">
 				<div className="title">Mint Tycoons</div>
 				<div className="mint-card">

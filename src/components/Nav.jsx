@@ -7,16 +7,16 @@ export const MainNav = () => {
 		<div className="main-nav">
 			<div className="socials">
 				<Link to="#">
-					<img src="./assets/svgs/twitter.svg" />
+					<img src="./assets/svgs/twitter.svg" alt="twitter" />
 				</Link>
 				<Link to="#">
-					<img src="./assets/svgs/discord.svg" />
+					<img src="./assets/svgs/discord.svg" alt="discord" />
 				</Link>
 				<Link to="#">
-					<img src="./assets/svgs/instagram.svg" />
+					<img src="./assets/svgs/instagram.svg" alt="instagram" />
 				</Link>
 				<Link to="#">
-					<img src="./assets/svgs/telegram.svg" />
+					<img src="./assets/svgs/telegram.svg" alt="telegram" />
 				</Link>
 			</div>
 
