@@ -1,6 +1,8 @@
 // Dependencies
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
+
+import { Web3Context } from "../context/web3Context";
 
 // importing styles
 import "../styles/Nav.scss";
@@ -54,8 +56,8 @@ export const MainNav = () => {
 	);
 };
 
-export const AltNav = ({ web3, account, connect }) => {
-	const accountLocal = localStorage.getItem("account");
+export const AltNav = () => {
+	const { account, getWeb3ModalProvider, networkId } = useContext(Web3Context);
 
 	return (
 		<div className="alt-nav">
@@ -84,17 +86,17 @@ export const AltNav = ({ web3, account, connect }) => {
 				</div>
 			</div>
 			<div className="account">
-				{accountLocal && web3 ? (
+				{account ? (
 					<>
-						{web3.eth.getChainId() === "0x13881" ? (
-							<div className="network">Polygon Mumbai Testnet</div>
+						{networkId === 80001 ? (
+							<div className="network">Polygon Testnet</div>
 						) : (
 							<div className="network danger">Wrong Network</div>
 						)}
-						<div className="address">{accountLocal}</div>
+						<div className="address">{account}</div>
 					</>
 				) : (
-					<button onClick={connect}>Connect Wallet</button>
+					<button onClick={getWeb3ModalProvider}>Connect Wallet</button>
 				)}
 			</div>
 		</div>
