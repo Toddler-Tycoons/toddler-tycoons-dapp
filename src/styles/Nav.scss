@@ -113,6 +113,15 @@
 			padding: 0.5rem 1rem;
 			margin-left: 1rem;
 		}
+		.address {
+			width: 8rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.danger {
+			background-color: $danger;
+			color: $light;
+		}
 		button {
 			@include btn-primary($accent, $light);
 			border-radius: $br-round;

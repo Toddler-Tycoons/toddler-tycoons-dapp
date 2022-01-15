@@ -50,12 +50,12 @@ const Home = () => {
 
 				<div className="background">
 					<img
-						src={"./assets/imgs/tycoon1.png"}
+						src={"./assets/imgs/tycoon2.png"}
 						alt="Tycoon"
 						className="tycoon tycoon-1"
 					/>
 					<img
-						src={"./assets/imgs/tycoon2.png"}
+						src={"./assets/imgs/tycoon1.png"}
 						alt="Tycoon"
 						className="tycoon tycoon-2"
 					/>

@@ -54,7 +54,9 @@ export const MainNav = () => {
 	);
 };
 
-export const AltNav = () => {
+export const AltNav = ({ web3, account, connect }) => {
+	const accountLocal = localStorage.getItem("account");
+
 	return (
 		<div className="alt-nav">
 			<div className="logo">
@@ -82,13 +84,18 @@ export const AltNav = () => {
 				</div>
 			</div>
 			<div className="account">
-				{/* If User */}
-
-				{/* <div className="network">Polygon</div>
-				<div className="address">0x69696...69</div> */}
-
-				{/* If not user */}
-				<button>Connect Wallet</button>
+				{accountLocal && web3 ? (
+					<>
+						{web3.eth.getChainId() === "0x13881" ? (
+							<div className="network">Polygon Mumbai Testnet</div>
+						) : (
+							<div className="network danger">Wrong Network</div>
+						)}
+						<div className="address">{accountLocal}</div>
+					</>
+				) : (
+					<button onClick={connect}>Connect Wallet</button>
+				)}
 			</div>
 		</div>
 	);

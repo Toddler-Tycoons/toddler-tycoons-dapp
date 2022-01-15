@@ -2,7 +2,7 @@
 @font-face {
 	font-family: "Recoleta";
 	src: local("Recoleta"), local("recoleta"), local("Recoleta-Regular"),
-		url("../../public/assets/fonts/Recoleta-Regular.woff") format("woff");
+		url("./assets/fonts/Recoleta-Regular.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
 }
@@ -10,7 +10,7 @@
 @font-face {
 	font-family: "Recoleta";
 	src: local("Recoleta"), local("recoleta"), local("Recoleta-Light"),
-		url("../../public/assets/fonts/Recoleta-Light.woff") format("woff");
+		url("./assets/fonts/Recoleta-Light.woff") format("woff");
 	font-weight: 300;
 	font-style: normal;
 }
@@ -18,7 +18,7 @@
 @font-face {
 	font-family: "Recoleta";
 	src: local("Recoleta"), local("recoleta"), local("Recoleta-Medium"),
-		url("../../public/assets/fonts/Recoleta-Medium.woff") format("woff");
+		url("./assets/fonts/Recoleta-Medium.woff") format("woff");
 	font-weight: 600;
 	font-style: normal;
 }
@@ -26,7 +26,7 @@
 @font-face {
 	font-family: "Recoleta";
 	src: local("Recoleta"), local("recoleta"), local("Recoleta-SemiBold"),
-		url("../../public/assets/fonts/Recoleta-SemiBold.woff") format("woff");
+		url("./assets/fonts/Recoleta-SemiBold.woff") format("woff");
 	font-weight: 700;
 	font-style: normal;
 }
@@ -34,7 +34,7 @@
 @font-face {
 	font-family: "Recoleta";
 	src: local("Recoleta"), local("recoleta"), local("Recoleta-Bold"),
-		url("../../public/assets/fonts/Recoleta-Bold.woff") format("woff");
+		url("./assets/fonts/Recoleta-Bold.woff") format("woff");
 	font-weight: 800;
 	font-style: normal;
 }
