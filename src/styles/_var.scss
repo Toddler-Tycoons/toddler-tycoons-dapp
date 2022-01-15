@@ -1,0 +1,103 @@
+// importing fonts
+@font-face {
+	font-family: "Recoleta";
+	src: local("Recoleta"), local("recoleta"), local("Recoleta-Regular"),
+		url("../../public/assets/fonts/Recoleta-Regular.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Recoleta";
+	src: local("Recoleta"), local("recoleta"), local("Recoleta-Light"),
+		url("../../public/assets/fonts/Recoleta-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Recoleta";
+	src: local("Recoleta"), local("recoleta"), local("Recoleta-Medium"),
+		url("../../public/assets/fonts/Recoleta-Medium.woff") format("woff");
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Recoleta";
+	src: local("Recoleta"), local("recoleta"), local("Recoleta-SemiBold"),
+		url("../../public/assets/fonts/Recoleta-SemiBold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Recoleta";
+	src: local("Recoleta"), local("recoleta"), local("Recoleta-Bold"),
+		url("../../public/assets/fonts/Recoleta-Bold.woff") format("woff");
+	font-weight: 800;
+	font-style: normal;
+}
+
+// colors
+$bg1: #e9defa;
+$bg2: #fbfcdb;
+$accent: #ad00ff;
+$success: #4caf50;
+$warning: #ffeb3b;
+$danger: #f44336;
+$light: #fff;
+$dark: #434343;
+
+// fonts-sizes
+$txt-xs: 12px;
+$txt-xs-mobile: 12px;
+$txt-sm: 18px;
+$txt-sm-mobile: 16px;
+$txt-md: 24px;
+$txt-md-mobile: 22px;
+$txt-lg: 48px;
+$txt-lg-mobile: 46px;
+$txt-xl: 64px;
+$txt-xl-mobile: 62px;
+$txt-xxl: 72px;
+$txt-xxl-mobile: 70px;
+
+// font-weights
+$fw-light: 300;
+$fw-reg: 500;
+$fw-medium: 600;
+$fw-semibold: 700;
+$fw-bold: 800;
+
+// font-family
+$ff-reg: "Recoleta", serif;
+
+// border-radius
+$br-sm: 0.5rem;
+$br-md: 1rem;
+$br-lg: 2rem;
+$br-round: 500px;
+
+// MIXINS   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@mixin center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// buttons
+@mixin btn-primary($bg, $clr) {
+	@include center;
+	background-color: $bg;
+	color: $clr;
+	border: none;
+	cursor: pointer;
+}
+
+// links
+@mixin link-primary {
+	cursor: pointer;
+	text-decoration: none;
+	color: $dark;
+}

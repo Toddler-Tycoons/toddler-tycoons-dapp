@@ -7,7 +7,6 @@ import Mint from "./components/Mint";
 import NotFound from "./components/NotFound";
 
 // Importing styles
-import "./App.css";
 
 const App = () => {
 	return (

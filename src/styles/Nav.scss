@@ -1,0 +1,130 @@
+@import "var";
+
+.main-nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 6ch;
+	padding: 0.75rem 2rem;
+	z-index: 2;
+
+	.socials-wrapper {
+		width: calc((100vw - 2rem) / 3);
+		.socials {
+			display: flex;
+			align-items: center;
+			.social {
+				@include link-primary;
+				margin-right: 1rem;
+				transition: all 0.3s ease-in-out;
+				width: 1rem;
+				height: 1rem;
+				border-radius: 50%;
+				@include center;
+				&:hover {
+					background-color: rbga($accent, 0.4);
+					box-shadow: 0px 0px 12px 2px rgba($accent, 0.4);
+				}
+			}
+		}
+	}
+
+	.logo {
+		@include center;
+		width: calc((100vw - 2rem) / 3);
+		span a {
+			@include link-primary;
+		}
+		span {
+			font-size: $txt-md;
+			font-weight: $fw-bold;
+		}
+	}
+
+	.menu-wrapper {
+		width: calc((100vw - 2rem) / 3);
+		position: relative;
+		.menu {
+			display: flex;
+			justify-content: flex-end;
+			align-items: flex-end;
+			z-index: 2;
+			font-size: $txt-xs;
+			.menu-item {
+				@include link-primary;
+				margin-left: 1rem;
+				transition: all 0.3s ease-in-out;
+
+				&:hover {
+					text-shadow: 0px 0px 8px rgba($accent, 0.4);
+				}
+			}
+		}
+	}
+}
+
+.alt-nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 6ch;
+	padding: 0.75rem 2rem;
+	z-index: 2;
+
+	.logo {
+		width: calc((100vw - 2rem) / 3);
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		font-size: $txt-md;
+		span a {
+			@include link-primary;
+		}
+		font-weight: $fw-bold;
+	}
+
+	.menu {
+		width: calc((100vw - 2rem) / 3);
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		z-index: 2;
+		font-size: $txt-xs;
+		.menu-item {
+			@include link-primary;
+			margin-left: 1rem;
+			transition: all 0.3s ease-in-out;
+			&:hover {
+				text-shadow: 0px 0px 8px rgba($accent, 0.4);
+			}
+		}
+	}
+	.account {
+		width: calc((100vw - 2rem) / 3);
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		.network,
+		.address {
+			background-color: $light;
+			border-radius: $br-sm;
+			padding: 0.5rem 1rem;
+			margin-left: 1rem;
+		}
+		button {
+			@include btn-primary($accent, $light);
+			border-radius: $br-round;
+			padding: 0.5rem 1rem;
+			font-family: inherit;
+			font-size: $txt-sm;
+			font-weight: $fw-bold;
+			transition: all 0.3s ease-in-out;
+			&:hover {
+				background-color: rgba($accent, 0.8);
+				box-shadow: 0px 0px 12px 2px rgba($accent, 0.4);
+			}
+		}
+	}
+}

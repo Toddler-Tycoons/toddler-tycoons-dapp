@@ -8,7 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 
 // Importing styles
-import "./index.css";
+import "./styles/index.scss";
 
 ReactDOM.render(
 	<Router>

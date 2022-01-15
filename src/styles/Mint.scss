@@ -1,0 +1,129 @@
+@import "var";
+
+.mint {
+	background: linear-gradient(257.26deg, $bg1 4.81%, $bg2 94.61%);
+	width: 100vw;
+	height: 100vh;
+	.content-wrapper {
+		padding: 2rem;
+		position: relative;
+		width: 100%;
+		height: calc(100vh - 6ch);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.tycoon-imgs {
+			@include center;
+			width: calc(50% - 2rem);
+			.tycoon3 {
+				height: 75vh;
+				min-height: 18rem;
+				z-index: 4;
+			}
+			.tycoon4 {
+				height: 75vh;
+				min-height: 18rem;
+				z-index: 3;
+				margin-left: -8rem;
+			}
+		}
+		.content {
+			width: calc(50% - 2rem);
+			.title {
+				@include center;
+				font-size: $txt-lg;
+				font-weight: $fw-bold;
+				width: 100%;
+				margin-bottom: 2rem;
+			}
+			.mint-card {
+				margin: 0 auto;
+				width: 65%;
+				padding: 1.5rem;
+				background-color: $light;
+				border-radius: $br-md;
+				box-shadow: 0px 0px 18px 4px rgba(0, 0, 0, 0.1);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				.input {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-around;
+					align-items: center;
+					min-height: 10ch;
+					input {
+						position: relative;
+						padding: 0.25rem 1rem;
+						font-size: $txt-lg;
+						width: 3ch;
+						margin-bottom: 0.5rem;
+						border: none;
+						border-radius: $br-sm;
+						background-color: darken($light, 10%);
+						font-family: inherit;
+
+						&:focus {
+							outline: none;
+						}
+					}
+					button {
+						@include btn-primary($accent, $light);
+						font-size: $txt-sm;
+						border-radius: $br-round;
+						padding: 0.5rem 1rem;
+						font-family: inherit;
+						transition: all 0.3s ease-in-out;
+						a {
+							@include link-primary;
+							color: $light;
+						}
+						&:hover {
+							background-color: rgba($accent, 0.8);
+							box-shadow: 0px 0px 8px rgba($accent, 0.4);
+						}
+					}
+				}
+				.remaining-info {
+					margin-top: 1rem;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					.high {
+						color: $accent;
+						font-size: $txt-sm;
+						font-weight: $fw-semibold;
+					}
+					.text {
+						font-size: $txt-sm;
+						font-weight: $fw-reg;
+					}
+				}
+			}
+		}
+		.socials-alt {
+			position: absolute;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: column;
+			bottom: 2rem;
+			left: 2rem;
+			height: 15ch;
+			.social {
+				@include link-primary;
+				transition: all 0.3s ease-in-out;
+				width: 1rem;
+				height: 1rem;
+				border-radius: 50%;
+				@include center;
+				&:hover {
+					background-color: rbga($accent, 0.4);
+					box-shadow: 0px 0px 12px 2px rgba($accent, 0.4);
+				}
+			}
+		}
+	}
+}
