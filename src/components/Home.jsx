@@ -1,15 +1,26 @@
 // Dependencies
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Component Imports
 import { MainNav } from "./Nav";
 import { handleNumbers } from "../utils/handleNumbers";
+import { Web3Context } from "../context/web3Context";
 
 // importing styles
 import "../styles/Home.scss";
 
 const Home = () => {
+	const { getTreasuryBalance } = useContext(Web3Context);
+	const [treasuryBalance, setTreasuryBalance] = useState(0);
+	useEffect(() => {
+		const Treasurey = async () => {
+			const number = Number(await getTreasuryBalance());
+			return handleNumbers(number);
+		};
+		const temp = Treasurey();
+		setTreasuryBalance(temp);
+	}, [Web3Context]);
 	return (
 		<div className="home">
 			<MainNav />
@@ -22,12 +33,11 @@ const Home = () => {
 						Tycoons
 					</div>
 					<div className="tldr">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quam
-						aliquam deserunt libero debitis, odio dicta reprehenderit architecto
-						voluptas a, nemo quae impedit eveniet temporibus quaerat non,
-						incidunt dolores eos? Vitae commodi quidem natus quam culpa? Non ad
-						nisi nihil amet fuga a saepe unde explicabo ipsa qui assumenda
-						temporibus culpa.
+						Li'l investors trying to take over the world economy.
+						<br />
+						Welcome aboard lil investors! Start collecting yields harvested from
+						different DeFi strategies by HODLING the Toddler Tycoons NFTs. Mint
+						the finest baby investors with USDC and fund the treasury.
 					</div>
 					<div className="to-mint-btn">
 						<button>
@@ -73,7 +83,7 @@ const Home = () => {
 						<div className="text">Tycoons already Sold</div>
 					</div>
 					<div className="total">
-						<div className="value">{handleNumbers(1200000)}</div>
+						<div className="value">{treasuryBalance}</div>
 						<div className="text">USDC in Treasurey</div>
 					</div>
 					<div className="backed">

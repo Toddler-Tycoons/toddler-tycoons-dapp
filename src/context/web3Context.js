@@ -113,30 +113,36 @@ const Web3ContextProvider = (props) => {
 		}
 	}, [provider, web3]);
 
-	const mint = (_qty) => {
-		return mintContract.methods.mintNFT(account, _qty).send({ from: account });
+	const mint = async (_qty) => {
+		return await mintContract.methods
+			.mintNFT(account, _qty)
+			.send({ from: account });
 	};
 
-	const approve = () => {
-		return tUSDCContract.methods
+	const approve = async () => {
+		return await tUSDCContract.methods
 			.approve(mintAddress, "1000000000000000000000000")
 			.send({ from: account });
 	};
 
-	const isApproved = () => {
-		return tUSDCContract.methods.allowance(account, mintAddress).call();
+	const getTreasuryBalance = async () => {
+		return await tUSDCContract.methods.balanceOf(mintAddress).call();
 	};
 
-	const rewardBalance = () => {
-		return mintContract.methods.rewardBalance(account).call();
+	const isApproved = async () => {
+		return await tUSDCContract.methods.allowance(account, mintAddress).call();
 	};
 
-	const NFTBalance = () => {
-		return mintContract.methods.balanceOf(account).call();
+	const rewardBalance = async () => {
+		return await mintContract.methods.rewardBalance(account).call();
 	};
 
-	const tUSDCBalance = () => {
-		return tUSDCContract.methods.balanceOf(account).call();
+	const NFTBalance = async () => {
+		return await mintContract.methods.balanceOf(account).call();
+	};
+
+	const tUSDCBalance = async () => {
+		return await tUSDCContract.methods.balanceOf(account).call();
 	};
 
 	return (
@@ -155,6 +161,7 @@ const Web3ContextProvider = (props) => {
 				NFTBalance,
 				tUSDCBalance,
 				isApproved,
+				getTreasuryBalance,
 			}}>
 			{props.children}
 		</Web3Context.Provider>
