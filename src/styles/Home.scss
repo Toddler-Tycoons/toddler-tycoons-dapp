@@ -3,9 +3,14 @@
 .home {
 	background: linear-gradient(109.25deg, $bg1 4.26%, $bg2 96.25%);
 	position: relative;
-	.hero {
-		overflow-x: hidden;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 
+	-ms-overflow-style: none; /* for Internet Explorer, Edge */
+	scrollbar-width: none; /* for Firefox */
+	overflow-y: scroll;
+	.hero {
 		width: 100vw;
 		height: 100vh;
 		position: relative;
@@ -112,6 +117,8 @@
 			}
 		}
 		.background {
+			overflow-y: hidden;
+			overflow-x: visible;
 			display: flex;
 			justify-content: center;
 			align-items: flex-end;
@@ -160,7 +167,7 @@
 					z-index: 100;
 				}
 			}
-			@media screen and (max-width: 780px) {
+			@media screen and (max-width: $bp-tab) {
 				flex-direction: column;
 				height: calc(30% - 3ch);
 			}
@@ -199,7 +206,7 @@
 					color: $dark;
 				}
 			}
-			@media screen and (max-width: 780px) {
+			@media screen and (max-width: $bp-tab) {
 				justify-content: space-evenly;
 				flex-direction: column;
 				height: calc(70% - 3ch);

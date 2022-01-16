@@ -2,6 +2,8 @@ import { useState, createContext, useEffect } from "react";
 import Web3 from "web3";
 import Web3Modal, { Provider } from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import { mintAbi, tUSDCAbi } from "../utils/Abi";
+import { mintAddress, tUSDCAddress } from "../utils/Address";
 
 const Web3Context = createContext({
 	web3: undefined,
@@ -33,6 +35,9 @@ const web3Modal = new Web3Modal({
 const Web3ContextProvider = (props) => {
 	const [provider, setProvider] = useState();
 	const [providerName, setProviderName] = useState("None");
+	const [tUSDCContract, setTUSDCContract] = useState();
+	const [mintContract, setMintContract] = useState();
+
 	const [web3, setWeb3] = useState(new Web3());
 	const [account, setAccount] = useState();
 	const [networkId, setNetworkId] = useState("");
@@ -61,6 +66,9 @@ const Web3ContextProvider = (props) => {
 	};
 
 	useEffect(() => {
+		setMintContract(new web3.eth.Contract(mintAbi, mintAddress));
+		setTUSDCContract(new web3.eth.Contract(tUSDCAbi, tUSDCAddress));
+
 		if (web3Modal.cachedProvider) {
 			(async () => {
 				await web3Modal.connect();
@@ -105,6 +113,32 @@ const Web3ContextProvider = (props) => {
 		}
 	}, [provider, web3]);
 
+	const mint = (_qty) => {
+		return mintContract.methods.mintNFT(account, _qty).send({ from: account });
+	};
+
+	const approve = () => {
+		return tUSDCContract.methods
+			.approve(mintAddress, "1000000000000000000000000")
+			.send({ from: account });
+	};
+
+	const isApproved = () => {
+		return tUSDCContract.methods.allowance(account, mintAddress).call();
+	};
+
+	const rewardBalance = () => {
+		return mintContract.methods.rewardBalance(account).call();
+	};
+
+	const NFTBalance = () => {
+		return mintContract.methods.balanceOf(account).call();
+	};
+
+	const tUSDCBalance = () => {
+		return tUSDCContract.methods.balanceOf(account).call();
+	};
+
 	return (
 		<Web3Context.Provider
 			value={{
@@ -115,6 +149,12 @@ const Web3ContextProvider = (props) => {
 				disconnectProvider,
 				networkId,
 				connectENS,
+				mint,
+				approve,
+				rewardBalance,
+				NFTBalance,
+				tUSDCBalance,
+				isApproved,
 			}}>
 			{props.children}
 		</Web3Context.Provider>

@@ -1,0 +1,2 @@
+export const tUSDCAddress = "0x8AD0518e2E2D61bBd359cb56BC680b0fF0d890Df";
+export const mintAddress = "0x397567C3E75Af2375A885e835BB519f71c22E86a";

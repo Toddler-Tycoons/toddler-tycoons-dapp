@@ -8,10 +8,24 @@ import { Web3Context } from "../context/web3Context";
 
 // importing styles
 import "../styles/Mint.scss";
+import { useEffect } from "react";
 
 const Mint = () => {
 	const [toMint, setToMint] = useState(1);
-	const { account, getWeb3ModalProvider, networkId } = useContext(Web3Context);
+	const [isApp, setIsApp] = useState(false);
+	const {
+		account,
+		getWeb3ModalProvider,
+		networkId,
+		mint,
+		approve,
+		isApproved,
+	} = useContext(Web3Context);
+
+	useEffect(() => {
+		const approved = isApproved();
+		setIsApp(approved);
+	}, [Web3Context]);
 
 	return (
 		<div className="mint">
@@ -40,21 +54,23 @@ const Mint = () => {
 								min={1}
 								onChange={(e) => setToMint(e.target.value)}
 							/>
-							{networkId === "80001" ? (
-								!account ? (
-									<button onClick={getWeb3ModalProvider}>Connect Wallet</button>
-								) : (
-									<button onClick={() => {}}>
+
+							{/* 
+								<button onClick={getWeb3ModalProvider}>Connect Wallet</button>
+								<button onClick={() => mint(toMint)}>
 										Mint {toMint} {toMint <= 1 ? "Tycoon" : "Tycoons"}
 									</button>
-								)
-							) : !account ? (
-								<div className="connect-btns">
-									{/* <button onClick={getWeb3ModalProvider}>Connect .eth</button> */}
+
+									<div className="connect-btns">
+									{/* <button onClick={getWeb3ModalProvider}>Connect .eth</button> 
 									<button onClick={getWeb3ModalProvider} className="wallet-btn">
 										Connect Wallet
 									</button>
 								</div>
+							*/}
+
+							{networkId === "80001" ? (
+								<button onClick={getWeb3ModalProvider}>Connect Wallet</button>
 							) : (
 								<button className="danger" disabled>
 									Change network
