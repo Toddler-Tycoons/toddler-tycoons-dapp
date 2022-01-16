@@ -1,52 +1,21 @@
 // importing dependencies
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import Web3 from "web3";
-import Web3Modal from "web3modal";
-import WalletConnectProvider from "@walletconnect/web3-provider";
 
 // importing components
 import { AltNav } from "./Nav";
+import { Web3Context } from "../context/web3Context";
 
 // importing styles
 import "../styles/Mint.scss";
 
 const Mint = () => {
-	const [toMint, setToMint] = useState(0);
-	const [account, setAccount] = useState("");
-	const [web3, setWeb3] = useState(null);
-
-	const providerOptions = {
-		walletconnect: {
-			package: WalletConnectProvider, // required
-			options: {
-				infuraId: "8446a7e044dc4043c63d04d8", // required
-			},
-		},
-	};
-
-	const web3Modal = new Web3Modal({
-		network: {
-			chainId: 8001,
-			nodeUrl:
-				"https://speedy-nodes-nyc.moralis.io/8446a7e044dc4043c63d04d8/polygon/mumbai",
-		},
-		cacheProvider: true,
-		providerOptions,
-	});
-
-	const connect = async () => {
-		const provider = await web3Modal.connect();
-		const web3_local = new Web3(provider);
-		const accounts = await web3_local.eth.getAccounts();
-		window.localStorage.setItem("account", accounts[0]);
-		setAccount(accounts[0]);
-		setWeb3(web3_local);
-	};
+	const [toMint, setToMint] = useState(1);
+	const { account, getWeb3ModalProvider, networkId } = useContext(Web3Context);
 
 	return (
 		<div className="mint">
-			<AltNav web3={web3} account={account} connect={connect} />
+			<AltNav />
 			<div className="content-wrapper">
 				<div className="tycoon-imgs">
 					<img
@@ -68,13 +37,27 @@ const Mint = () => {
 								type="number"
 								name="toMint"
 								value={toMint}
+								min={1}
 								onChange={(e) => setToMint(e.target.value)}
 							/>
-							{!account ? (
-								<button onClick={connect}>Connect Wallet</button>
+							{networkId === "80001" ? (
+								!account ? (
+									<button onClick={getWeb3ModalProvider}>Connect Wallet</button>
+								) : (
+									<button onClick={() => {}}>
+										Mint {toMint} {toMint <= 1 ? "Tycoon" : "Tycoons"}
+									</button>
+								)
+							) : !account ? (
+								<div className="connect-btns">
+									{/* <button onClick={getWeb3ModalProvider}>Connect .eth</button> */}
+									<button onClick={getWeb3ModalProvider} className="wallet-btn">
+										Connect Wallet
+									</button>
+								</div>
 							) : (
-								<button>
-									Mint {toMint} {toMint <= 1 ? "Tycoon" : "Tycoons"}
+								<button className="danger" disabled>
+									Change network
 								</button>
 							)}
 						</div>

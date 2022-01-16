@@ -1,6 +1,8 @@
 @import "var";
 
 .main-nav {
+	background-color: rgba($light, 0.2);
+	position: fixed;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -102,6 +104,7 @@
 		}
 	}
 	.account {
+		position: relative;
 		width: calc((100vw - 2rem) / 3);
 		display: flex;
 		justify-content: flex-end;
@@ -122,17 +125,39 @@
 			background-color: $danger;
 			color: $light;
 		}
-		button {
-			@include btn-primary($accent, $light);
+		.connect-btns {
+			@include center;
+			.wallet-btn {
+				margin-left: 0.75rem;
+			}
+			button {
+				@include btn-primary($accent, $light);
+				border-radius: $br-round;
+				padding: 0.5rem 1rem;
+				font-family: inherit;
+				font-size: $txt-sm;
+				font-weight: $fw-bold;
+				transition: all 0.3s ease-in-out;
+				&:hover {
+					background-color: rgba($accent, 0.8);
+					box-shadow: 0px 0px 12px 2px rgba($accent, 0.4);
+				}
+			}
+		}
+
+		.logout-btn {
+			cursor: pointer;
+			@include btn-primary($danger, $light);
 			border-radius: $br-round;
 			padding: 0.5rem 1rem;
 			font-family: inherit;
-			font-size: $txt-sm;
+			font-size: $txt-xs;
 			font-weight: $fw-bold;
 			transition: all 0.3s ease-in-out;
+			margin-left: 1rem;
 			&:hover {
-				background-color: rgba($accent, 0.8);
-				box-shadow: 0px 0px 12px 2px rgba($accent, 0.4);
+				background-color: rgba($danger, 0.8);
+				box-shadow: 0px 0px 12px rgba($danger, 0.4);
 			}
 		}
 	}
