@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import Web3 from "web3";
-import Web3Modal from "web3modal";
+import Web3Modal, { Provider } from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
 const Web3Context = createContext({
@@ -22,7 +22,7 @@ const providerOptions = {
 
 const web3Modal = new Web3Modal({
 	network: {
-		chainId: 8001,
+		chainId: 80001,
 		nodeUrl:
 			"https://speedy-nodes-nyc.moralis.io/8446a7e044dc4043c63d04d8/polygon/mumbai",
 	},
@@ -35,16 +35,20 @@ const Web3ContextProvider = (props) => {
 	const [providerName, setProviderName] = useState("None");
 	const [web3, setWeb3] = useState(new Web3());
 	const [account, setAccount] = useState();
-	const [networkId, setNetworkId] = useState(80001);
+	const [networkId, setNetworkId] = useState("");
 
 	const getWeb3ModalProvider = async () => {
-		if (provider) {
-			if (provider?._walletConnect) provider._walletConnect.showWalletConnect();
-		} else {
+		if (!provider) {
 			const _provider = await web3Modal.connect();
 			setWeb3(new Web3(_provider));
 			setProvider(_provider);
+			setNetworkId(_provider.networkVersion);
 		}
+	};
+
+	const connectENS = async (domain) => {
+		const address = web3.eth.ens.getAddress(domain);
+		setAccount(address);
 	};
 
 	const disconnectProvider = () => {
@@ -57,6 +61,12 @@ const Web3ContextProvider = (props) => {
 	};
 
 	useEffect(() => {
+		if (web3Modal.cachedProvider) {
+			(async () => {
+				await web3Modal.connect();
+			})();
+		}
+
 		if (web3.currentProvider)
 			(async () => {
 				const accounts = await web3.eth.getAccounts();
@@ -84,6 +94,7 @@ const Web3ContextProvider = (props) => {
 			provider.on("connect", (info) => {
 				console.log("Provider Listener: Connected");
 				console.log(info);
+				setNetworkId(info.chainId);
 			});
 
 			// Subscribe to provider disconnection
@@ -103,6 +114,7 @@ const Web3ContextProvider = (props) => {
 				getWeb3ModalProvider,
 				disconnectProvider,
 				networkId,
+				connectENS,
 			}}>
 			{props.children}
 		</Web3Context.Provider>

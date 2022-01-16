@@ -10,8 +10,8 @@ import { Web3Context } from "../context/web3Context";
 import "../styles/Mint.scss";
 
 const Mint = () => {
-	const [toMint, setToMint] = useState(0);
-	const { account, getWeb3ModalProvider } = useContext(Web3Context);
+	const [toMint, setToMint] = useState(1);
+	const { account, getWeb3ModalProvider, networkId } = useContext(Web3Context);
 
 	return (
 		<div className="mint">
@@ -37,13 +37,27 @@ const Mint = () => {
 								type="number"
 								name="toMint"
 								value={toMint}
+								min={1}
 								onChange={(e) => setToMint(e.target.value)}
 							/>
-							{!account ? (
-								<button onClick={getWeb3ModalProvider}>Connect Wallet</button>
+							{networkId === "80001" ? (
+								!account ? (
+									<button onClick={getWeb3ModalProvider}>Connect Wallet</button>
+								) : (
+									<button onClick={() => {}}>
+										Mint {toMint} {toMint <= 1 ? "Tycoon" : "Tycoons"}
+									</button>
+								)
+							) : !account ? (
+								<div className="connect-btns">
+									{/* <button onClick={getWeb3ModalProvider}>Connect .eth</button> */}
+									<button onClick={getWeb3ModalProvider} className="wallet-btn">
+										Connect Wallet
+									</button>
+								</div>
 							) : (
-								<button onClick={() => {}}>
-									Mint {toMint} {toMint <= 1 ? "Tycoon" : "Tycoons"}
+								<button className="danger" disabled>
+									Change network
 								</button>
 							)}
 						</div>

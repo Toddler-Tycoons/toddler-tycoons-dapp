@@ -23,9 +23,9 @@ const encryptCardDetails = async (cardDetails) => {
 	});
 };
 
-const saveCardDetails = async (url, options) => {
+const saveCardDetails = async (CardInforUrl, options) => {
 	try {
-		const response = await fetch(url, options);
+		const response = await fetch(CardInfoUrl, options);
 		const data = await response.json();
 		return data;
 	} catch (error) {
@@ -33,4 +33,12 @@ const saveCardDetails = async (url, options) => {
 	}
 };
 
-const makePaymentRequest = async (url, options) => {};
+const makePaymentRequest = async (PaymentUrl, options) => {
+	try {
+		const response = await fetch(PaymentUrl, options);
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.log(error);
+	}
+};

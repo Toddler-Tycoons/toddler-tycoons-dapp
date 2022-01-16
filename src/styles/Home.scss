@@ -2,10 +2,12 @@
 
 .home {
 	background: linear-gradient(109.25deg, $bg1 4.26%, $bg2 96.25%);
+	position: relative;
 	.hero {
-		overflow: hidden;
+		overflow-x: hidden;
+
 		width: 100vw;
-		height: calc(100vh - 6ch);
+		height: 100vh;
 		position: relative;
 		@include center;
 		.content-wrapper {
@@ -130,6 +132,77 @@
 			}
 			.tycoon-2 {
 				margin-right: -3rem;
+			}
+		}
+	}
+	.treasurey {
+		margin-top: 10ch;
+		width: 100vw;
+		height: calc(100vh - 6ch);
+		@include center;
+		flex-direction: column;
+		.bank-image {
+			@include center;
+			width: 100%;
+			height: calc(60% - 3ch);
+			img {
+				position: relative;
+				width: 35vw;
+				min-width: 18rem;
+				&:after {
+					position: absolute;
+					content: "";
+					width: 10rem;
+					height: 10rem;
+					background: coral;
+					top: 0;
+					left: 0;
+					z-index: 100;
+				}
+			}
+			@media screen and (max-width: 780px) {
+				flex-direction: column;
+				height: calc(30% - 3ch);
+			}
+		}
+		.stats {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			width: 100%;
+			height: calc(40% - 3ch);
+			.sold,
+			.total,
+			.backed {
+				@include center;
+				flex-direction: column;
+				.value {
+					font-size: $txt-xl;
+					font-weight: $fw-bold;
+					text-shadow: 0px 0px 36px rgba($accent, 0.4);
+				}
+				font-size: $txt-md;
+				font-weight: $fw-medium;
+				color: $dark;
+				margin-bottom: 1rem;
+			}
+			.total {
+				.value {
+					font-size: $txt-xxl;
+					font-weight: $fw-bold;
+				}
+			}
+			.backed {
+				.value span {
+					font-size: $txt-md;
+					font-weight: $fw-medium;
+					color: $dark;
+				}
+			}
+			@media screen and (max-width: 780px) {
+				justify-content: space-evenly;
+				flex-direction: column;
+				height: calc(70% - 3ch);
 			}
 		}
 	}

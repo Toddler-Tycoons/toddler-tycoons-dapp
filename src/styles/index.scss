@@ -4,6 +4,10 @@
 *::before,
 *::after {
 	box-sizing: border-box;
+	iframe {
+		display: none;
+	}
+	scroll-behavior: smooth;
 }
 
 body {

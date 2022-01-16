@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 // Component Imports
 import { MainNav } from "./Nav";
+import { handleNumbers } from "../utils/handleNumbers";
 
 // importing styles
 import "../styles/Home.scss";
@@ -61,6 +62,32 @@ const Home = () => {
 					/>
 				</div>
 			</div>
+
+			<div className="treasurey">
+				<div className="bank-image">
+					<img src="./assets/imgs/bank.png" alt="bank" />
+				</div>
+				<div className="stats">
+					<div className="sold">
+						<div className="value">1234</div>
+						<div className="text">Tycoons already Sold</div>
+					</div>
+					<div className="total">
+						<div className="value">{handleNumbers(1200000)}</div>
+						<div className="text">USDC in Treasurey</div>
+					</div>
+					<div className="backed">
+						<div className="value">
+							50<span>USDC</span>
+						</div>
+						<div className="text">backed to every Tycoon</div>
+					</div>
+				</div>
+			</div>
+
+			<div className="roadmap"></div>
+
+			<div className="team"></div>
 		</div>
 	);
 };
